@@ -16,9 +16,9 @@ const About = () => {
       id="about"
       className="py-4 px-[7vw] md:px-[7vw] lg:px[20vw] font-sans mt-16 md:mt-18 lg:mt-20"
     >
-      <div className="flex flex-col-reverse md:flex-row justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center">
         {/* Left Side */}
-        <div className="md:w-1/2 flex justify-center md:justify-end mt-4">
+        <div className="md:w-1/2 flex justify-center md:justify-end mt-4 mb-10 ml-3">
           <Tilt 
             className="w-48 h-48 sm:w-64 sm:h-64 md:h-[30rem] md:w-[30rem] border-4 border-[#0fbbff] rounded-full"
             tiltMaxAngleX={20}
