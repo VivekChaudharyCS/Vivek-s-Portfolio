@@ -31,10 +31,10 @@ function App() {
         <About />
         <Skills />
         {/* <Experience /> */}
-        <Projects />
-        <Education />
-        <Contact />
-        <Footer />
+        {/* <Projects /> */}
+        {/* <Education /> */}
+        {/* <Contact /> */}
+        {/* <Footer /> */}
       </div>
     </div>
   )
