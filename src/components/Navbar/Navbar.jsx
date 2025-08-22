@@ -29,40 +29,44 @@ const Navbar = () => {
   }, []);
 
   // 🔥 Scroll Spy
-  useEffect(() => {
-    const sections = document.querySelectorAll("section"); // assumes each component has <section id="...">
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 } // section considered active when 50% in view
-    );
+useEffect(() => {
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    },
+    {
+      threshold: window.innerWidth < 768 ? 0.3 : 0.5, // mobile-friendly
+      rootMargin: "-100px 0px -100px 0px", // account for fixed navbar
+    }
+  );
 
-    sections.forEach((section) => observer.observe(section));
+  sections.forEach((section) => observer.observe(section));
 
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
-  }, []);
+  return () => {
+    sections.forEach((section) => observer.unobserve(section));
+  };
+}, []);
+
 
   const handleMenuItemClick = (itemId) => {
-  setActiveSection(itemId);
-  setIsOpen(false);
+    setActiveSection(itemId);
+    setIsOpen(false);
 
-  const element = document.getElementById(itemId);
-  if (element) {
-    let yOffset = 0;
-    if (itemId === "about") {
-      yOffset = -160; // ✅ offset for fixed navbar
+    const element = document.getElementById(itemId);
+    if (element) {
+      let yOffset = 0;
+      if (itemId === "about") {
+        yOffset = -160; // ✅ offset for fixed navbar
+      }
+      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
-    const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  }
-};
+  };
 
   const menuItems = [
     { id: "about", label: "About" },
