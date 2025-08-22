@@ -113,14 +113,14 @@ const Navbar = () => {
           {menuItems.map((item) => (
             <li
               key={item.id}
-              className={`relative cursor-pointer 
+              className={`relative 
                 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 
                 after:h-[2px] after:bg-[#0fbbff] after:transition-all after:duration-300 after:ease-in-out 
                 hover:after:w-full ${
                   activeSection === item.id ? "after:w-full text-[#0fbbff]" : ""
                 }`}
             >
-              <button onClick={() => handleMenuItemClick(item.id)}>
+              <button onClick={() => handleMenuItemClick(item.id)} className="cursor-pointer">
                 {item.label}
               </button>
             </li>

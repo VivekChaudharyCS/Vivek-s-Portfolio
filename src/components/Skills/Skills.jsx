@@ -43,6 +43,7 @@ const Skills = () => {
                   scale={1.05}
                   glareEnable={false}
                   transitionSpeed={800}
+                  className="rounded-3xl"
                 >
                   <div className="flex items-center justify-center space-x-2 bg-transparent border-2 border-gray-700 rounded-3xl py-2 px-2 sm:py-2 sm:px-2 text-center max-w-full overflow-hidden transition-all hover:shadow-[0_0_10px_rgba(15,187,255,0.4)] hover:border-[#0fbbff]">
                     <img
