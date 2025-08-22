@@ -37,10 +37,10 @@ const Skills = () => {
               {category.skills.map((skill) => (
                 <Tilt
                   key={skill.name}
-                  tiltMaxAngleX={15}
-                  tiltMaxAngleY={15}
+                  tiltMaxAngleX={20}
+                  tiltMaxAngleY={20}
                   perspective={1200}
-                  scale={1.05}
+                  scale={1.10}
                   glareEnable={false}
                   transitionSpeed={800}
                   className="rounded-3xl"
