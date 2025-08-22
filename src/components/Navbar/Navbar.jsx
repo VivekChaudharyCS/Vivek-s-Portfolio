@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-// import { Ract } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,30 +27,47 @@ const Navbar = () => {
     };
   }, []);
 
-  // 🔥 Scroll Spy
-useEffect(() => {
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+  // ✅ Scroll Spy (works on both desktop + mobile)
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+    const navHeight = document.querySelector("nav")?.offsetHeight || 80;
+    let observer;
+
+    const createObserver = () => {
+      if (observer) {
+        sections.forEach((section) => observer.unobserve(section));
+      }
+
+      const isMobile = window.innerWidth < 768;
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+            }
+          });
+        },
+        {
+          threshold: isMobile ? 0.2 : 0.4,
+          rootMargin: isMobile
+            ? `-${navHeight + 40}px 0px -${navHeight + 140}px 0px`
+            : `-${navHeight + 20}px 0px -${navHeight + 100}px 0px`,
         }
-      });
-    },
-    {
-      threshold: window.innerWidth < 768 ? 0.3 : 0.5, // mobile-friendly
-      rootMargin: "-100px 0px -100px 0px", // account for fixed navbar
-    }
-  );
+      );
 
-  sections.forEach((section) => observer.observe(section));
+      sections.forEach((section) => observer.observe(section));
+    };
 
-  return () => {
-    sections.forEach((section) => observer.unobserve(section));
-  };
-}, []);
+    createObserver();
+    window.addEventListener("resize", createObserver);
 
+    return () => {
+      if (observer) {
+        sections.forEach((section) => observer.unobserve(section));
+      }
+      window.removeEventListener("resize", createObserver);
+    };
+  }, []);
 
   const handleMenuItemClick = (itemId) => {
     setActiveSection(itemId);
@@ -59,10 +75,7 @@ useEffect(() => {
 
     const element = document.getElementById(itemId);
     if (element) {
-      let yOffset = 0;
-      if (itemId === "about") {
-        yOffset = -160; // ✅ offset for fixed navbar
-      }
+      let yOffset = itemId === "about" ? -160 : 0; // ✅ offset for navbar
       const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
@@ -79,19 +92,14 @@ useEffect(() => {
   return (
     <nav
       className={`fixed font-bold top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${
-        isScrolled
-          ? "bg-[#053c48]/20 backdrop-blur-lg shadow-lg"
-          : "bg-transparent"
+        isScrolled ? "bg-[#053c48]/20 backdrop-blur-lg shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="text-[#f1f5f9] py-5 flex justify-between items-center">
         {/* Logo */}
         <div
           className="text-2xl font-semibold cursor-pointer"
-          onClick={() => {
-              handleMenuItemClick("about");
-            }
-          }
+          onClick={() => handleMenuItemClick("about")}
         >
           <span className="text-[#0fbbff]">&lt;</span>
           <span className="text-[#f1f5f9]">Vivek</span>
@@ -105,25 +113,20 @@ useEffect(() => {
           {menuItems.map((item) => (
             <li
               key={item.id}
-              className={`
-                relative cursor-pointer
-                after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px]
-                after:bg-[#0fbbff] after:transition-all after:duration-300 after:ease-in-out
-                hover:after:w-full
-                ${
+              className={`relative cursor-pointer 
+                after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 
+                after:h-[2px] after:bg-[#0fbbff] after:transition-all after:duration-300 after:ease-in-out 
+                hover:after:w-full ${
                   activeSection === item.id ? "after:w-full text-[#0fbbff]" : ""
-                }
-            `}
+                }`}
             >
-              <button
-                onClick={() => handleMenuItemClick(item.id)}
-                className="cursor-pointer"
-              >
+              <button onClick={() => handleMenuItemClick(item.id)}>
                 {item.label}
               </button>
             </li>
           ))}
         </ul>
+
         {/* Social Media Icons */}
         <div className="hidden md:flex space-x-4 text-2xl">
           <a
@@ -167,26 +170,19 @@ useEffect(() => {
             {menuItems.map((item) => (
               <li
                 key={item.id}
-                className={`
-                  relative cursor-pointer
-                  after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px]
-                  after:bg-[#0fbbff] after:transition-all after:duration-300 after:ease-in-out
-                  hover:after:w-full
-                  ${
-                    activeSection === item.id
-                      ? "after:w-full text-[#0fbbff]"
-                      : ""
-                  }
-              `}
+                className={`relative cursor-pointer 
+                  after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 
+                  after:h-[2px] after:bg-[#0fbbff] after:transition-all after:duration-300 after:ease-in-out 
+                  hover:after:w-full ${
+                    activeSection === item.id ? "after:w-full text-[#0fbbff]" : ""
+                  }`}
               >
-                <button
-                  onClick={() => handleMenuItemClick(item.id)}
-                  className="cursor-pointer"
-                >
+                <button onClick={() => handleMenuItemClick(item.id)}>
                   {item.label}
                 </button>
               </li>
             ))}
+
             <div className="flex space-x-4">
               <a
                 href="https://github.com/VivekChaudharyCS"
