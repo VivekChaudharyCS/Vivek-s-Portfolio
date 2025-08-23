@@ -55,7 +55,7 @@ const About = () => {
               ]}
               loop={0}
               cursor
-              cursorStyle={<span className="text-[#0fbbff]">|</span>}
+              cursorStyle={<span className="text-accent-light">|</span>}
               typeSpeed={100}
               deleteSpeed={50}
               delaySpeed={2000}
