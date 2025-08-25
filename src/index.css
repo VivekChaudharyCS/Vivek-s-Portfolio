@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 /* global styles */
 * {
@@ -30,8 +32,9 @@ html {
   --color-light-text: #081d2c;
   --color-dark-text: #f1f5f9;
   --color-dark-para: #c9d9e8;
-  --color-accent-light: #0fbbff;
-  --color-accent-dark: #38bdf8;
+  --color-light-para: #112e42;
+  --color-global-clr: #0fbbff;
+  --color-btn-clr: #ff499e;
 
   /* gradient token */
   --skills-gradient:
