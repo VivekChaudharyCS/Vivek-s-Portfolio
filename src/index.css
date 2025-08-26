@@ -37,14 +37,23 @@ html {
   --color-btn-clr: #ff499e;
 
   /* gradient token */
-  --skills-gradient:
+  --skills-gradient-dark:
     linear-gradient(78.73deg, rgba(8,29,44,0.15) 0%, rgba(8,29,44,0) 50%),
     linear-gradient(141.27deg, rgba(15,187,255,0) 50%, rgba(15,187,255,0.15) 100%);
+
+    --skills-gradient-light:
+  linear-gradient(78.73deg, rgba(241,245,249,0.6) 0%, rgba(241,245,249,0) 50%),
+  linear-gradient(141.27deg, rgba(15,187,255,0) 50%, rgba(15,187,255,0.15) 100%);
+
 }
 
 /* custom utilities */
-@utility bg-skills-gradient {
-  background-image: var(--skills-gradient);
+@utility bg-skills-gradient-light {
+  background-image: var(--skills-gradient-light);
+}
+
+@utility bg-skills-gradient-dark {
+  background-image: var(--skills-gradient-dark);
 }
 
 @utility clip-path-custom {
