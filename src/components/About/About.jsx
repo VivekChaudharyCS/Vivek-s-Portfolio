@@ -26,7 +26,7 @@ const About = () => {
             perspective={1000}
             scale={1.05}
             transitionSpeed={1000}
-            gyroscope={true}
+            gyroscope={false}
           >
             <img src={profileImage} alt="Vivek's Image" 
               className="w-full h-full rounded-full object-cover drop-shadow-[0_10px_20px_rgba(15,187,255,0.5)]"
@@ -36,16 +36,16 @@ const About = () => {
         {/* Right Side */}
         <div className="md:w-1/2 text-center md:text-left ml-15 mr-10 md:mt-0">
           {/* Greeting */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-dark-text mb-2 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold dark:text-dark-text text-light-text mb-2 leading-tight">
             Hi, I am
           </h1>
           {/* Name */}
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-dark-text mb-4 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold dark:text-dark-text text-light-text mb-4 leading-tight">
             Vivek Kumar
           </h2>
           {/* Skills heading with typing effect */}
           <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-global-clr leading-tight">
-            <span className="text-dark-text">I am a </span>
+            <span className="dark:text-dark-text text-light-text">I am a </span>
             {show && <Typewriter
               words={[
                 "Fullstack Developer",
@@ -62,7 +62,7 @@ const About = () => {
             />}
           </h3>
           {/* About me paragraph */}
-          <p className="text-base sm:text-lg md:text-lg text-dark-para mb-10 mt-8 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-lg dark:text-dark-para text-light-para mb-10 mt-8 leading-relaxed">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
             Ratione maiores recusandae tempore quas error, cum ipsum qui
             numquam obcaecati? Neque rerum tempora magnam similique molestias 
@@ -70,7 +70,7 @@ const About = () => {
           </p>
           {/* Resume Button */}
           <a href="https://drive.usercontent.google.com/u/0/uc?id=10VW__PPh_4z0U2oH5RNE28WRpJ8lejp_&export=download" rel="noopener noreferrer"
-            className="inline-block text-dark-text py-3 px-8 rounded-full mt-5 text-lg font-bold transition duration-300 transform hover:scale-105"
+            className="inline-block dark:text-dark-text text-light-text py-3 px-8 rounded-full mt-5 text-lg font-bold transition duration-300 transform hover:scale-105"
             style={{
               background: 'linear-gradient(90deg, #ff499e, #f25ea3)',
               boxShadow: '0 0 2px #ff499e, 0 0 2px #ff499e, 0 0 40px #ff499e',

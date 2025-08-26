@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -129,14 +129,14 @@ const Navbar = () => {
           onClick={() => handleMenuItemClick("about")}
         >
           <span className="text-global-clr">&lt;</span>
-          <span className="text-dark-text">Vivek</span>
+          <span className="dark:text-dark-text text-light-text">Vivek</span>
           <span className="text-global-clr">/</span>
-          <span className="text-dark-text">Kumar</span>
+          <span className="dark:text-dark-text text-light-text">Kumar</span>
           <span className="text-global-clr">&gt;</span>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex text-dark-text space-x-8 text-lg">
+        <ul className="hidden md:flex dark:text-dark-text text-light-text space-x-8 text-lg">
           {menuItems.map((item) => (
             <li
               key={item.id}
@@ -165,7 +165,7 @@ const Navbar = () => {
             href="https://github.com/VivekChaudharyCS"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-dark-text hover:text-global-clr"
+            className="dark:text-dark-text text-light-text hover:text-global-clr"
           >
             <FaGithub size={24} />
           </a>
@@ -173,7 +173,7 @@ const Navbar = () => {
             href="https://www.linkedin.com/in/vivek-kumar-software-developer"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-dark-text hover:text-global-clr"
+            className="dark:text-dark-text text-light-text hover:text-global-clr"
           >
             <FaLinkedin size={24} />
           </a>
@@ -183,9 +183,9 @@ const Navbar = () => {
             className="inherit hover:cursor-pointer "
           >
             {theme === "dark" ? (
-              <MdLightMode className="text-yellow-300 hover:text-global-clr" />
+              <MdLightMode className="text-yellow-300 hover:text-global-clr rounded-full" />
             ) : (
-              <MdDarkMode className="text-gray-500 hover:text-global-clr" />
+              <MdDarkMode className="text-light-text hover:text-global-clr rounded-full" />
             )}
           </button>
         </div>
@@ -253,9 +253,9 @@ const Navbar = () => {
                 className="inherit hover:cursor-pointer "
               >
                 {theme === "dark" ? (
-                  <MdLightMode className="text-yellow-300 hover:text-global-clr" />
+                  <MdLightMode className="text-yellow-300 hover:text-global-clr rounded-full " />
                 ) : (
-                  <MdDarkMode className="text-gray-500 hover:text-global-clr" />
+                  <MdDarkMode className="text-light-text hover:text-global-clr rounded-full" />
                 )}
               </button>
             </div>
