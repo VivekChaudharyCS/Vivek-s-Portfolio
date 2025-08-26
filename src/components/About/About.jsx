@@ -70,6 +70,7 @@ const About = () => {
           </p>
           {/* Resume Button */}
           <a href="https://drive.usercontent.google.com/u/0/uc?id=10VW__PPh_4z0U2oH5RNE28WRpJ8lejp_&export=download" rel="noopener noreferrer"
+            target="_blanck"
             className="inline-block dark:text-dark-text text-light-text py-3 px-8 rounded-full mt-5 text-lg font-bold transition duration-300 transform hover:scale-105"
             style={{
               background: 'linear-gradient(90deg, #ff499e, #f25ea3)',

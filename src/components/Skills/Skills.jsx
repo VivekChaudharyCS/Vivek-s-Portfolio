@@ -10,11 +10,11 @@ const Skills = () => {
     >
       {/* Section Title */}
       <div className="text-center mb-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-dark-text">
+        <h2 className="text-3xl sm:text-4xl font-bold dark:text-dark-text text-light-text">
           SKILLS
         </h2>
         <div className="w-24 h-1 bg-global-clr mx-auto mt-2"></div>
-        <p className="text-dark-para mt-4 text-lg font-semibold">
+        <p className="dark:text-dark-para text-light-para mt-4 text-lg font-semibold">
           A collection of my technical skills and expertise honed through
           various projects and experiences
         </p>
@@ -26,9 +26,9 @@ const Skills = () => {
         {SkillsInfo.map((category) => (
           <div
             key={category.title}
-            className="bg-[#081723] backdrop-blur-md px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl border border-global-clr/30 shadow-[0_0_8px_rgba(15,187,255,0.25),0_0_20px_rgba(15,187,255,0.1)]"
+            className="bg-light-bg dark:bg-dark-bg backdrop-blur-md px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl border border-global-clr/30 shadow-[0_0_8px_rgba(15,187,255,0.25),0_0_20px_rgba(15,187,255,0.1)]"
           >
-            <h3 className="text-2xl sm:text-3xl font-semibold text-dark-para mb-4 text-center">
+            <h3 className="text-2xl sm:text-3xl font-semibold dark:text-dark-para text-light-para mb-4 text-center">
               {category.title}
             </h3>
             {/* Skill Items - 3 per row on larger screens*/}
@@ -44,6 +44,7 @@ const Skills = () => {
                   glareEnable={false}
                   transitionSpeed={800}
                   className="rounded-3xl"
+
                 >
                   <div className="flex items-center justify-center space-x-2 bg-transparent border-2 border-gray-700 rounded-3xl py-2 px-2 sm:py-2 sm:px-2 text-center max-w-full overflow-hidden transition-all hover:shadow-[0_0_10px_rgba(15,187,255,0.4)] hover:border-global-clr">
                     <img
@@ -51,7 +52,7 @@ const Skills = () => {
                       alt={skill.name}
                       className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0"
                     />
-                    <span className="text-xs sm:text-sm text-gray-300 truncate max-w-[100px]">
+                    <span className="text-xs sm:text-sm dark:text-dark-para text-light-para truncate max-w-[100px]">
                       {skill.name}
                     </span>
                   </div>
