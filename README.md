@@ -4,7 +4,7 @@ A sleek, responsive, and fully customizable **animated portfolio website** built
 
 ## 🚀 Live Demo
 
-🔗 [View Portfolio Live](link)
+🔗 [View Portfolio Live](https://vivek-s-portfolio-one.vercel.app/)
 
 ## 🛠️ Tech Stack
 
